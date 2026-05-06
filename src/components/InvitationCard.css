@@ -1,0 +1,378 @@
+.invitation-card {
+  position: absolute;
+  width: 90%;
+  max-width: 320px;
+  height: 500px;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 2; /* Sits inside the envelope between the back and front flaps */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.invitation-card.revealed {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+  display: block; /* Remove flex to allow scrolling naturally */
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Force full screen height */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.couple-photo-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center; /* Ensure the couple is centered */
+}
+
+.card-overlay-cinematic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0,0,0,0.1) 0%, 
+    rgba(0,0,0,0.3) 50%, 
+    rgba(0,0,0,0.7) 100%); /* Lighter top, darker bottom for text readability */
+}
+
+.card-content-overlay {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+  color: var(--color-white);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.save-the-date {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  color: var(--color-white);
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.divider-white {
+  width: 60px;
+  height: 1.5px;
+  background-color: var(--color-white);
+  margin: 15px auto;
+  opacity: 0.8;
+}
+
+.couple-names-white {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin: 20px 0;
+  color: var(--color-white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.wedding-date-white {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+
+.location-white {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.gold-accent-cinematic {
+  width: 120px;
+  height: 2px;
+  margin-top: 30px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+.modern-scroll-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.modern-arrow-single {
+  width: 30px;
+  height: 30px;
+  color: var(--color-white);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.couple-names-white {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin: 20px 0;
+  color: var(--color-white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+@keyframes bounceModern {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-8px); }
+}
+
+/* Event Details Section (Golden Hour Style) */
+.event-details-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F5E6CA 0%, #D8C3A5 100%);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #5D4037;
+  z-index: 10;
+}
+
+.decor-dots {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  color: #A68B5B;
+  font-size: 0.6rem;
+}
+
+.details-header {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: #3E2723;
+}
+
+.details-subtext {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.details-divider {
+  width: 150px;
+  height: 1px;
+  background: radial-gradient(circle, #A68B5B 0%, transparent 100%);
+  margin-bottom: 40px;
+}
+
+.details-couple {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
+.details-date-box {
+  position: relative;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+}
+
+.details-date {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+}
+
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #A68B5B;
+}
+
+.top-left { top: 0; left: 0; border-right: none; border-bottom: none; }
+.top-right { top: 0; right: 0; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 0; left: 0; border-right: none; border-top: none; }
+.bottom-right { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.details-location-box {
+  margin-bottom: 60px;
+}
+
+.details-location-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  margin-bottom: 15px;
+  color: #A68B5B;
+}
+
+.details-location {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  max-width: 300px;
+  line-height: 1.4;
+}
+
+.rsvp-btn {
+  padding: 15px 40px;
+  border: 1px solid #A68B5B;
+  border-radius: 50px;
+  color: #5D4037;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rsvp-btn:hover {
+  background: #A68B5B;
+  color: white;
+}
+
+.footer-credits {
+  margin-top: 80px;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@media (max-width: 400px) {
+  .invitation-card {
+    height: auto;
+  }
+  
+  .couple-names-white {
+    font-size: 2.2rem;
+  }
+  
+  .details-header {
+    font-size: 2.2rem;
+  }
+}
+
+/* Bible Verse Section (Page 3) */
+.verse-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #2D241E; /* Dark elegant brown */
+  flex-shrink: 0;
+}
+
+.verse-photo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.verse-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.verse-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(45,36,30,0.9) 100%);
+}
+
+.verse-content {
+  position: relative;
+  z-index: 5;
+  max-width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -80px; /* Move up slightly */
+}
+
+.amharic-verse {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--color-white);
+  margin: 30px 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.verse-reference {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: #D4AF37; /* Gold color */
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.verse-decoration {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+  .amharic-verse {
+    font-size: 1.3rem;
+  }
+}

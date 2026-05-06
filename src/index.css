@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap');
+
+:root {
+  --color-cream: #F2EBE1;
+  --color-seal-red: #9A2926;
+  --color-seal-red-dark: #7A211F;
+  --color-white: #FFFFFF;
+  --color-text-dark: #2C2C2C;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+    url("https://www.transparenttextures.com/patterns/linen.png"); /* Subtle fabric texture */
+  color: var(--color-text-dark);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.app-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--color-cream);
+}
+
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-cream);
+}
+
+.opening-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) brightness(1.02);
+}
+
+/* Gradient masks to hide baked-in UI elements with a soft fade */
+.video-wrapper::before,
+.video-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 25%; /* Increased height to ensure coverage */
+  z-index: 101;
+  pointer-events: none;
+}
+
+.video-wrapper::before {
+  top: 0;
+  background: linear-gradient(to bottom, 
+    var(--color-cream) 0%, 
+    var(--color-cream) 40%, /* Solid cream for the first 40% of the mask */
+    transparent 100%);
+}
+
+.video-wrapper::after {
+  bottom: 0;
+  background: linear-gradient(to top, 
+    var(--color-cream) 0%, 
+    var(--color-cream) 40%, /* Solid cream for the first 40% of the mask */
+    transparent 100%);
+}
+
+.invitation-wrapper {
+  opacity: 0;
+  transform: scale(1.1);
+  filter: blur(10px);
+  transition: 
+    opacity 2s ease, 
+    transform 2.5s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 2s ease;
+  width: 100%;
+  height: 100vh;
+}
+
+.invitation-wrapper.reveal {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  overflow-y: auto; /* Enable scrolling for the details page */
+  height: auto;
+  min-height: 100vh;
+}
+
+.start-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('../assets/envelope-bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  cursor: pointer;
+}
+
+.tap-to-open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tap-text {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-seal-red);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: fadeInOut 2s infinite ease-in-out;
+}
+
+.pulse-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-seal-red);
+  margin-top: 20px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(154, 41, 38, 0.4);
+}
+
+.pulse-circle::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-seal-red);
+  animation: pulse 1.5s infinite;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(154, 41, 38, 0.03) 0%, rgba(242, 235, 225, 0) 70%);
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+}
+
+.circle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -50px;
+  left: -50px;
+}
