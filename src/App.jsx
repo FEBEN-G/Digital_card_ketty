@@ -4,41 +4,42 @@ import './index.css';
 import openingVideo from './assets/envelope-opening.mp4';
 
 function App() {
-  const [hasStarted, setHasStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [videoFinished, setVideoFinished] = useState(false);
   const [showInvitation, setShowInvitation] = useState(false);
+  const videoRef = React.useRef(null);
 
   const handleStart = () => {
-    setHasStarted(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   const handleVideoEnd = () => {
     setVideoFinished(true);
-    // Snappy transition
     setShowInvitation(true);
   };
 
   return (
-    <div className="app-container" onClick={!hasStarted ? handleStart : undefined}>
-      {!hasStarted && (
-        <div className="start-screen">
-          <div className="tap-to-open">
-            <span className="tap-text">Open Invitation</span>
-            <div className="pulse-circle" />
-          </div>
-        </div>
-      )}
-
-      {hasStarted && !videoFinished && (
-        <div className="video-wrapper">
+    <div className="app-container">
+      {!videoFinished && (
+        <div className="video-wrapper" onClick={!isPlaying ? handleStart : undefined}>
           <video 
+            ref={videoRef}
             src={openingVideo} 
-            autoPlay 
             muted 
             playsInline
             onEnded={handleVideoEnd}
             className="opening-video"
           />
+          {!isPlaying && (
+            <div className="video-overlay-interact">
+              <div className="pulse-circle">
+                <span className="tap-to-open-text">Tap to Open</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

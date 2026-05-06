@@ -126,60 +126,64 @@ button {
   min-height: 100vh;
 }
 
-.start-screen {
-  position: fixed;
+.video-overlay-interact {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: url('../assets/envelope-bg.jpg') center/cover no-repeat;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 200;
+  z-index: 105;
   cursor: pointer;
-}
-
-.tap-to-open {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: rgba(0,0,0,0.1); /* Subtle darkening for the first frame */
 }
 
 .tap-text {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--color-seal-red);
+  display: none; /* Removed as requested */
+}
+
+.tap-to-open-text {
+  font-family: var(--font-serif); /* Use serif for a more premium look */
+  font-size: 1.2rem;
+  color: var(--color-white);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  z-index: 201;
+  pointer-events: none;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Shadow for visibility on video */
   animation: fadeInOut 2s infinite ease-in-out;
 }
 
 .pulse-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--color-seal-red);
-  margin-top: 20px;
+  width: auto;
+  height: auto;
+  background: transparent; /* Removed red background */
   position: relative;
-  box-shadow: 0 0 20px rgba(154, 41, 38, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 
 .pulse-circle::after {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
   border-radius: 50%;
-  border: 2px solid var(--color-seal-red);
-  animation: pulse 1.5s infinite;
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Modern pulsing ring */
+  animation: pulse 2s infinite;
   opacity: 0;
 }
+
 
 @keyframes pulse {
   0% { transform: scale(0.8); opacity: 0.8; }
