@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import './InvitationCard.css';
 import couplePhoto from '../assets/couple-photo.jpg';
 import versePhoto from '../assets/verse-photo.jpg';
+import weddingRings from '../assets/wedding-rings.png';
 
 const InvitationCard = ({ isOpen, isRevealed }) => {
   return (
@@ -98,6 +99,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          <img src={weddingRings} alt="Rings" className="details-rings" />
           Save the Date
         </motion.h2>
 
