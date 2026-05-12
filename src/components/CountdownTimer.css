@@ -1,0 +1,121 @@
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.countdown-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.timer-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: #8D7B68;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.timer-date {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: #2D241E;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.timer-day-time {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: #A68B5B;
+  font-style: italic;
+}
+
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 40px;
+}
+
+.timer-unit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-box {
+  background: var(--color-paper);
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.06),
+    inset 0 0 15px rgba(0,0,0,0.02);
+  margin-bottom: 12px;
+  border: 1px solid rgba(166, 139, 91, 0.15);
+}
+
+.timer-value {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #2D241E;
+  font-weight: 500;
+}
+
+.timer-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #8D7B68;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.timer-divider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.timer-divider::before,
+.timer-divider::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #A68B5B, transparent);
+  flex: 1;
+  max-width: 100px;
+}
+
+.heart-icon {
+  margin: 0 20px;
+  color: #A68B5B;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 450px) {
+  .timer-grid {
+    gap: 10px;
+  }
+  
+  .timer-value {
+    font-size: 1.4rem;
+  }
+  
+  .timer-date {
+    font-size: 2rem;
+  }
+}

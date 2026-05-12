@@ -1,11 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import './InvitationCard.css';
 import couplePhoto from '../assets/couple-photo.jpg';
 import versePhoto from '../assets/verse-photo.jpg';
 import weddingRings from '../assets/wedding-rings.png';
+import calendarBg from '../assets/calendar-bg.jpg';
+import CountdownTimer from './CountdownTimer';
+import WeddingCalendar from './WeddingCalendar';
+import WeddingTimeline from './WeddingTimeline';
+import PhotoGallery from './PhotoGallery';
 
 const InvitationCard = ({ isOpen, isRevealed }) => {
+  const { t, i18n } = useTranslation();
   return (
     <motion.div 
       className={`invitation-card ${isRevealed ? 'revealed' : ''}`}
@@ -29,15 +36,15 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
             animate={isOpen ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="save-the-date">SAVE THE DATE</span>
+            <span className="save-the-date">{t('save_the_date_caps')}</span>
             <div className="divider-white" />
           </motion.div>
 
           <motion.h1 
-            className="couple-names-white"
+            className="couple-names-white script-font"
             initial={{ y: 20, opacity: 0 }}
             animate={isOpen ? { 
-              y: [0, -10, 0], 
+              y: [0, -5, 0], 
               opacity: 1 
             } : { y: 20, opacity: 0 }}
             transition={{ 
@@ -49,7 +56,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
               opacity: { duration: 0.8 }
             }}
           >
-            Heni & Yab
+            Henok & Yabsira
           </motion.h1>
 
           <motion.div 
@@ -63,7 +70,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
-              3 May 2026
+              {t('wedding_date')}
             </motion.p>
             <motion.div 
               className="modern-scroll-container"
@@ -78,7 +85,36 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         </div>
       </div>
 
-      {/* Page 2: Event Details (Golden Hour Style) */}
+      {/* Page 2: Invitation Message Section */}
+      <div className="message-page-section">
+        <motion.div 
+          className="message-card"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="floral-corner top-left" />
+          <div className="floral-corner top-right" />
+          
+          <h2 className="message-title">{t('invitation_title')}</h2>
+          <div className="message-divider" />
+          <div className="message-body">
+            {t('invitation_message').split('\n').map((line, i) => (
+              <p key={i} className="message-line">
+                {line.split('**').map((part, j) => (
+                  j % 2 === 1 ? <strong key={j}>{part}</strong> : part
+                ))}
+              </p>
+            ))}
+          </div>
+
+          <div className="floral-corner bottom-left" />
+          <div className="floral-corner bottom-right" />
+        </motion.div>
+      </div>
+
+      {/* Page 3: Event Details (Golden Hour Style) */}
       <div className="event-details-section">
         <motion.div 
           className="decor-dots"
@@ -100,7 +136,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <img src={weddingRings} alt="Rings" className="details-rings" />
-          Save the Date
+          <span className="script-font gold-text">{t('save_the_date_caps')}</span>
         </motion.h2>
 
         <motion.p 
@@ -110,7 +146,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          We are getting married!
+          {t('getting_married')}
         </motion.p>
         
         <motion.div 
@@ -122,13 +158,13 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         />
         
         <motion.h3 
-          className="details-couple"
+          className="details-couple script-font"
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Heni & Yab
+          Henok & Yabsira
         </motion.h3>
 
         <motion.div 
@@ -140,7 +176,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         >
           <div className="corner top-left" />
           <div className="corner top-right" />
-          <p className="details-date">3 May 2026</p>
+          <p className="details-date">{t('wedding_date')}</p>
           <div className="corner bottom-left" />
           <div className="corner bottom-right" />
         </motion.div>
@@ -152,21 +188,22 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          <p className="details-location-label">LOCATION</p>
-          <p className="details-location">Salayish the Grand Hotel, Mizan Aman</p>
+          <p className="details-location-label">{t('wedding_venue')}</p>
+          <p className="details-location">{t('location')}</p>
         </motion.div>
 
-        <motion.button 
-          className="rsvp-btn" 
-          onClick={() => alert('RSVP Coming Soon')}
+        <motion.div 
+          className="event-schedule"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
         >
-          RSVP NOW
-        </motion.button>
+          <div className="schedule-item">
+            <span className="schedule-label">{t('ceremony')}</span>
+            <span className="schedule-time">{i18n.language === 'am' ? '7:00' : '13:00'}</span>
+          </div>
+        </motion.div>
 
         <motion.div 
           className="footer-credits"
@@ -179,7 +216,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         </motion.div>
       </div>
 
-      {/* Page 3: Bible Verse Section */}
+      {/* Page 4: Bible Verse Section */}
       <div className="verse-section">
         <div className="verse-photo-container">
           <motion.img 
@@ -232,6 +269,131 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           />
         </div>
       </div>
+
+      {/* Page 5: Countdown Section */}
+      <div className="final-countdown-section">
+        <CountdownTimer targetDate="2026-05-17T16:00:00" />
+        
+        <motion.div 
+          className="final-footer"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <p>Heni & Yab • 2026</p>
+        </motion.div>
+      </div>
+
+      {/* Page 6: Bridal Procession Section */}
+      <div className="procession-section">
+        <motion.div 
+          className="timer-divider"
+          initial={{ width: 0 }}
+          whileInView={{ width: '100%' }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="heart-icon">❤</div>
+        </motion.div>
+
+        <motion.div 
+          className="procession-content"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="procession-label">{t('bridal_procession')}</p>
+          
+          <div className="address-card">
+            <div className="address-icon-container">
+              <svg viewBox="0 0 24 24" className="map-icon-large">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div className="address-details">
+              <p className="address-text">{t('location')}</p>
+              <p className="address-subtext">{t('view_maps')}</p>
+            </div>
+          </div>
+
+          <motion.button 
+            className="directions-btn"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://maps.app.goo.gl/SDszuiRxtY1xibsw5', '_blank')}
+          >
+            <svg viewBox="0 0 24 24" className="btn-icon">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" fill="currentColor"/>
+            </svg>
+            {t('get_directions')}
+          </motion.button>
+        </motion.div>
+
+        <motion.div 
+          className="timer-divider"
+          initial={{ width: 0 }}
+          whileInView={{ width: '100%' }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <div className="heart-icon">❤</div>
+        </motion.div>
+      </div>
+
+      {/* Page 7: Calendar Section */}
+      <div className="calendar-page-section">
+        <div className="calendar-bg-container">
+          <img src={calendarBg} alt="Calendar Background" className="calendar-bg-image" />
+          <div className="calendar-overlay" />
+        </div>
+
+        <motion.div 
+          className="calendar-content"
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <WeddingCalendar />
+          
+          <motion.div 
+            className="calendar-footer-text"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <p>Save the date for our special day</p>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Page 8: Timeline Section */}
+      <div className="timeline-page-section">
+        <WeddingTimeline />
+      </div>
+
+      {/* Page 9: Photo Gallery Section */}
+      <div className="gallery-page-section">
+        <PhotoGallery />
+      </div>
+
+      {/* Page 10: Final Closing Section */}
+      <div className="final-message-section">
+        <motion.div 
+          className="final-message-content"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+        >
+          <h2 className="waiting-text script-font">{t('waiting_message')}</h2>
+          <div className="signature-divider" />
+          <p className="signature-names">Henok & Yabsira</p>
+        </motion.div>
+      </div>
+
     </motion.div>
   );
 };

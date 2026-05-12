@@ -1,0 +1,119 @@
+.gallery-container {
+  width: 100%;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-paper);
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: #A68B5B;
+  text-transform: uppercase;
+}
+
+.gallery-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: #2D241E;
+  margin: 10px 0;
+}
+
+.gallery-divider {
+  width: 60px;
+  height: 2px;
+  background: #A68B5B;
+  margin: 0 auto;
+  opacity: 0.3;
+}
+
+.gallery-autoflow-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 450px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-slide-auto {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  z-index: 5;
+}
+
+.gallery-item-organic {
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding: 15px 15px 50px 15px; /* Polaroid bottom space */
+  border-radius: 2px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.photo-wrapper-organic {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #eee;
+}
+
+.gallery-photo-organic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-card {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  background: #F9F7F2;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  z-index: 1;
+}
+
+.card-1 {
+  transform: rotate(-3deg) translate(-10px, 5px);
+  opacity: 0.8;
+}
+
+.card-2 {
+  transform: rotate(4deg) translate(8px, -5px);
+  opacity: 0.6;
+}
+
+.gallery-progress-bar {
+  width: 150px;
+  height: 2px;
+  background: rgba(166, 139, 91, 0.1);
+  margin-top: 30px;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #A68B5B;
+}
+
+@media (max-width: 450px) {
+  .gallery-autoflow-wrapper {
+    height: 400px;
+  }
+}
