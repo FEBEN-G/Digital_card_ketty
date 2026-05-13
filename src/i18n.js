@@ -39,7 +39,9 @@ i18n
           invitation_title: "Wedding Invitation",
           invitation_message: "Together with great joy and heartfelt blessings, we warmly invite you to celebrate the wedding ceremony of **Ato Henok & W/ro Yabsira** as they begin their beautiful journey of love and lifelong commitment.\n\nPlease honor us with your presence on **Sunday, May 17, 2026**.\n\nYour presence will make our special day even more meaningful and memorable.",
           waiting_message: "Thank you for being part of our story!",
-          grooms_house: "To the Groom's House"
+          grooms_house: "To the Groom's House",
+          bible_verse: "\"Therefore a man shall leave his father and his mother and hold fast to his wife, and they shall become one flesh.\"",
+          bible_reference: "Genesis 2:24"
         }
       },
       am: {
@@ -74,7 +76,9 @@ i18n
           invitation_title: "የክብር ጥሪ",
           invitation_message: "የማክበር ሰላምታችንን እያቀረብን የልጃችን የአቶ ሄኖክ እና የወ/ሪት ያብስራ የጋብቻ ስነስርዓት የሚፈጸመው እሁድ ግንቦት 9 ቀን 2018 ዓ.ም ስለሆነ በዚሁ ዕለት እንዲገኙልን በማክበር ጠርተንዎታል።",
           waiting_message: "ስለምትመጡ እናመሰግናለን!",
-          grooms_house: "ወደ ሙሽራው ቤት"
+          grooms_house: "ወደ ሙሽራው ቤት",
+          bible_verse: "\"ስለዚህ ሰው አባቱንና እናቱን ይተዋል፥ በሚስቱም ይጣበቃል፤ ሁለቱም አንድ ሥጋ ይሆናሉ።\"",
+          bible_reference: "ኦሪት ዘፍጥረት 2:24"
         }
       }
     },

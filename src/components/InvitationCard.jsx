@@ -247,7 +247,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            "ስለዚህ ሰው አባቱንና እናቱን ይተዋል፥ በሚስቱም ይጣበቃል፤ ሁለቱም አንድ ሥጋ ይሆናሉ።"
+            {t('bible_verse')}
           </motion.p>
           
           <motion.p 
@@ -257,7 +257,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            ኦሪት ዘፍጥረት 2:24
+            {t('bible_reference')}
           </motion.p>
 
           <motion.div 
