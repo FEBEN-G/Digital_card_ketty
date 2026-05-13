@@ -13,6 +13,7 @@ const WeddingTimeline = () => {
     { time: '13:00', amTime: '07:00', label: 'lunch', icon: '🍽', side: 'right' },
     { time: '15:30', amTime: '09:30', label: 'photos', icon: '📸', side: 'left' },
     { time: '17:00', amTime: '11:00', label: 'cake', icon: '🎂', side: 'right' },
+    { time: '18:00', amTime: '12:00', label: 'grooms_house', icon: '🏠', side: 'left' },
   ];
 
   return (
