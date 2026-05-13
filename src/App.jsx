@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import InvitationCard from './components/InvitationCard';
+import FloatingPetals from './components/FloatingPetals';
 import './index.css';
 import openingVideo from './assets/envelope-opening.mp4';
+import tapBackground from './assets/tap-background.png';
 import { useTranslation } from 'react-i18next';
 
 function App() {
@@ -25,16 +27,22 @@ function App() {
 
   const handleVideoEnd = () => {
     setVideoFinished(true);
-    setShowInvitation(true);
+    // Add a slight delay for the reveal to feel more cinematic
+    setTimeout(() => {
+      setShowInvitation(true);
+    }, 100);
   };
 
   return (
     <div className="app-container">
+      <FloatingPetals />
+      
       {!videoFinished && (
         <div className="video-wrapper" onClick={!isPlaying ? handleStart : undefined}>
           <video 
             ref={videoRef}
             src={openingVideo} 
+            poster={tapBackground}
             muted 
             playsInline
             onEnded={handleVideoEnd}
@@ -56,7 +64,7 @@ function App() {
 
       {videoFinished && (
         <div className={`invitation-wrapper ${showInvitation ? 'reveal' : ''}`}>
-          <InvitationCard isOpen={true} isRevealed={true} />
+          <InvitationCard isOpen={showInvitation} isRevealed={showInvitation} />
         </div>
       )}
       
