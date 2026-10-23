@@ -2,17 +2,46 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import './InvitationCard.css';
-import couplePhoto from '../assets/couple-photo.jpg';
-import versePhoto from '../assets/verse-photo.jpg';
+import couplePhoto from '../assets/emu-1.jpg';
+import versePhoto from '../assets/emu-3.jpg';
 import weddingRings from '../assets/wedding-rings.png';
-import calendarBg from '../assets/calendar-bg.jpg';
+import calendarBg from '../assets/emu-2.jpg';
 import CountdownTimer from './CountdownTimer';
 import WeddingCalendar from './WeddingCalendar';
-import WeddingTimeline from './WeddingTimeline';
 import PhotoGallery from './PhotoGallery';
+import { useTilt } from '../useTilt';
+
+function renderInvitationLine(line) {
+  const parts = line.split('**');
+  const nodes = [];
+
+  for (let index = 0; index < parts.length; index += 1) {
+    if (index % 2 === 0) {
+      if (parts[index]) nodes.push(parts[index]);
+      continue;
+    }
+
+    let text = parts[index];
+    const next = parts[index + 1] || '';
+    const punctuation = next.match(/^\s*[.,;:!?]+/);
+    if (punctuation) {
+      text += punctuation[0].trim();
+      parts[index + 1] = next.slice(punctuation[0].length);
+    }
+    nodes.push(
+      <strong key={index} className={/\d/.test(text) ? 'scroll-date' : 'scroll-names'}>
+        {text}
+      </strong>
+    );
+  }
+
+  return nodes;
+}
 
 const InvitationCard = ({ isOpen, isRevealed }) => {
   const { t, i18n } = useTranslation();
+  const heroRef = useTilt(7);
+  const messageRef = useTilt(8);
   return (
     <motion.div 
       className={`invitation-card ${isRevealed ? 'revealed' : ''}`}
@@ -23,12 +52,13 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         ease: [0.65, 0, 0.35, 1] 
       }}
     >
-      <div className="hero-section">
-        <div className="full-screen-image-container">
-          <img src={couplePhoto} alt="Heni & Yab" className="couple-photo-full" />
+      <div className="hero-section" ref={heroRef}>
+        <div className="full-screen-image-container hero-photo-depth">
+          <img src={couplePhoto} alt="Muluken and Rediet" className="couple-photo-full" />
           <div className="card-overlay-cinematic" />
         </div>
 
+        <div className="hero-copy-depth">
         <div className="card-content-overlay">
           <motion.div 
             className="content-header"
@@ -56,7 +86,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
               opacity: { duration: 0.8 }
             }}
           >
-            Henok & Yabsira
+            Muluken & Rediet
           </motion.h1>
 
           <motion.div 
@@ -83,35 +113,47 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
             </motion.div>
           </motion.div>
         </div>
+        </div>
       </div>
 
       {/* Page 2: Invitation Message Section */}
       <div className="message-page-section">
+        <div className="message-tilt" ref={messageRef}>
         <motion.div 
-          className="message-card"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="message-scroll"
+          style={{ transformPerspective: 900 }}
+          initial={{ opacity: 0, rotateX: -16, scaleY: 0.92 }}
+          whileInView={{ opacity: 1, rotateX: 0, scaleY: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="floral-corner top-left" />
-          <div className="floral-corner top-right" />
-          
-          <h2 className="message-title">{t('invitation_title')}</h2>
-          <div className="message-divider" />
-          <div className="message-body">
-            {t('invitation_message').split('\n').map((line, i) => (
-              <p key={i} className="message-line">
-                {line.split('**').map((part, j) => (
-                  j % 2 === 1 ? <strong key={j}>{part}</strong> : part
-                ))}
-              </p>
-            ))}
+          <div className="scroll-roll" aria-hidden="true">
+            <span className="scroll-finial left" />
+            <span className="scroll-finial right" />
           </div>
 
-          <div className="floral-corner bottom-left" />
-          <div className="floral-corner bottom-right" />
+          <div className="scroll-sheet">
+            <h2 className="message-title">{t('invitation_title')}</h2>
+            <div className="scroll-ornament" aria-hidden="true">
+              <span />
+              <i>✦</i>
+              <span />
+            </div>
+            <div className="message-body">
+              {t('invitation_message').split('\n').map((line, i) => (
+                <p key={i} className="message-line">
+                  {renderInvitationLine(line)}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="scroll-roll scroll-roll-bottom" aria-hidden="true">
+            <span className="scroll-finial left" />
+            <span className="scroll-finial right" />
+          </div>
         </motion.div>
+        </div>
       </div>
 
       {/* Page 3: Event Details (Golden Hour Style) */}
@@ -164,15 +206,17 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Henok & Yabsira
+          Muluken & Rediet
         </motion.h3>
 
         <motion.div 
           className="details-date-box"
-          initial={{ scale: 0.9, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ scale: 0.9, opacity: 0, rotateX: 16 }}
+          whileInView={{ scale: 1, opacity: 1, rotateX: 0 }}
+          whileHover={{ rotateX: -7, y: -8 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 1 }}
+          style={{ transformPerspective: 800 }}
         >
           <div className="corner top-left" />
           <div className="corner top-right" />
@@ -201,7 +245,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         >
           <div className="schedule-item">
             <span className="schedule-label">{t('ceremony')}</span>
-            <span className="schedule-time">{i18n.language === 'am' ? '7:00' : '13:00'}</span>
+            <span className="schedule-time">{t('ceremony_time')}</span>
           </div>
         </motion.div>
 
@@ -212,7 +256,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 1.6 }}
         >
-          Heni & Yab • 2026
+          Mule & Redu • 2026
         </motion.div>
       </div>
 
@@ -272,7 +316,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
 
       {/* Page 5: Countdown Section */}
       <div className="final-countdown-section">
-        <CountdownTimer targetDate="2026-05-17T16:00:00" />
+        <CountdownTimer targetDate="2026-11-21T16:00:00" />
         
         <motion.div 
           className="final-footer"
@@ -281,7 +325,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <p>Heni & Yab • 2026</p>
+          <p>Mule & Redu • 2026</p>
         </motion.div>
       </div>
 
@@ -304,24 +348,26 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="procession-label">{t('bridal_procession')}</p>
-          
-          <div className="address-card">
-            <div className="address-icon-container">
-              <svg viewBox="0 0 24 24" className="map-icon-large">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-              </svg>
-            </div>
-            <div className="address-details">
-              <p className="address-text">{t('location')}</p>
-              <p className="address-subtext">{t('view_maps')}</p>
-            </div>
+          <p className="procession-label">{t('wedding_venue')}</p>
+          <p className="procession-place">{t('location')}</p>
+
+          <div className="venue-map-card">
+            <iframe
+              className="venue-map"
+              title={t('location')}
+              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15800!2d36.845033!3d7.682552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17adb8ea838ad921%3A0x70b55631e22a5906!2sGospel%20Truth%20International%20Church!5e0!3m2!1s${i18n.language?.startsWith('am') ? 'am' : 'en'}!2set!4v1700000000000`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
 
           <motion.button 
             className="directions-btn"
-            whileTap={{ scale: 0.95 }}
-            onClick={() => window.open('https://maps.app.goo.gl/SDszuiRxtY1xibsw5', '_blank')}
+            whileHover={{ y: -6, rotateX: 10 }}
+            whileTap={{ scale: 0.96, rotateX: 0 }}
+            style={{ transformPerspective: 700 }}
+            onClick={() => window.open('https://maps.app.goo.gl/ArDknttGUdpY84X4A', '_blank')}
           >
             <svg viewBox="0 0 24 24" className="btn-icon">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" fill="currentColor"/>
@@ -369,11 +415,6 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         </motion.div>
       </div>
 
-      {/* Page 8: Timeline Section */}
-      <div className="timeline-page-section">
-        <WeddingTimeline />
-      </div>
-
       {/* Page 9: Photo Gallery Section */}
       <div className="gallery-page-section">
         <PhotoGallery />
@@ -390,7 +431,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         >
           <h2 className="waiting-text script-font">{t('waiting_message')}</h2>
           <div className="signature-divider" />
-          <p className="signature-names">Henok & Yabsira</p>
+          <p className="signature-names">Muluken & Rediet</p>
         </motion.div>
       </div>
 

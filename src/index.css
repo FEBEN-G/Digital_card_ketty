@@ -71,6 +71,20 @@ button {
   align-items: center;
   overflow: hidden;
   background-color: var(--color-cream);
+  perspective: 1600px;
+}
+
+.pointer-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: radial-gradient(
+    240px circle at var(--light-x, 50%) var(--light-y, 20%),
+    rgba(212, 175, 55, 0.2),
+    transparent 72%
+  );
+  mix-blend-mode: soft-light;
 }
 
 .video-wrapper {
@@ -84,6 +98,17 @@ button {
   justify-content: center;
   align-items: center;
   background-color: var(--color-cream);
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+.opening-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.05);
+  transition: transform 0.12s ease-out;
+  transform-style: preserve-3d;
 }
 
 .opening-video {
@@ -140,6 +165,7 @@ button {
   overflow-y: auto; /* Enable scrolling for the details page */
   height: auto;
   min-height: 100vh;
+  transform-style: preserve-3d;
 }
 
 .video-overlay-interact {
@@ -154,6 +180,41 @@ button {
   z-index: 105;
   cursor: pointer;
   background: rgba(0,0,0,0.1); /* Subtle darkening for the first frame */
+}
+
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-silk);
+  color: var(--color-ink);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.music-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.music-toggle.is-on {
+  color: #8a6424;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
 }
 
 .lang-toggle {
@@ -179,8 +240,23 @@ button {
 }
 
 .lang-toggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-3px) rotateX(10deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointer-light,
+  .opening-stage,
+  .hero-photo-depth,
+  .hero-copy-depth,
+  .message-tilt {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .pointer-light {
+    display: none;
+  }
 }
 
 .tap-text {

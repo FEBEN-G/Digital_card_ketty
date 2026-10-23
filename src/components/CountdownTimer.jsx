@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import './CountdownTimer.css';
 
 const CountdownTimer = ({ targetDate }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -32,14 +32,12 @@ const CountdownTimer = ({ targetDate }) => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const TimeUnit = ({ value, label }) => (
-    <div className="timer-unit-container">
-      <div className="timer-box">
-        <span className="timer-value">{value.toString().padStart(2, '0')}</span>
-      </div>
-      <span className="timer-label">{label}</span>
-    </div>
-  );
+  const units = [
+    { value: timeLeft.days, label: t('days') },
+    { value: timeLeft.hours, label: t('hours') },
+    { value: timeLeft.minutes, label: t('minutes') },
+    { value: timeLeft.seconds, label: t('seconds') }
+  ];
 
   return (
     <div className="countdown-container">
@@ -56,10 +54,22 @@ const CountdownTimer = ({ targetDate }) => {
       </motion.div>
 
       <div className="timer-grid">
-        <TimeUnit value={timeLeft.days} label={t('days')} />
-        <TimeUnit value={timeLeft.hours} label={t('hours')} />
-        <TimeUnit value={timeLeft.minutes} label={t('minutes')} />
-        <TimeUnit value={timeLeft.seconds} label={t('seconds')} />
+        {units.map((unit) => (
+          <div className="timer-unit-container" key={unit.label}>
+            <div className="timer-box">
+              <motion.span
+                key={unit.value}
+                className="timer-value"
+                initial={{ rotateX: -75, opacity: 0 }}
+                animate={{ rotateX: 0, opacity: 1 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {unit.value.toString().padStart(2, '0')}
+              </motion.span>
+            </div>
+            <span className="timer-label">{unit.label}</span>
+          </div>
+        ))}
       </div>
 
       <motion.div 

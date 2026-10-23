@@ -9,6 +9,8 @@
   width: 100%;
   max-width: 350px;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  perspective: 1100px;
+  transform-style: preserve-3d;
 }
 
 .calendar-controls {

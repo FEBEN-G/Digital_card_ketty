@@ -8,27 +8,27 @@ const WeddingCalendar = () => {
   const [calendarType, setCalendarType] = useState('gregorian'); // 'gregorian' or 'ethiopian'
 
   const gregorianDays = [
-    null, null, null, null, null, 1, 2,
-    3, 4, 5, 6, 7, 8, 9,
-    10, 11, 12, 13, 14, 15, 16, 17,
-    18, 19, 20, 21, 22, 23, 24,
-    25, 26, 27, 28, 29, 30, 31
+    1, 2, 3, 4, 5, 6, 7,
+    8, 9, 10, 11, 12, 13, 14,
+    15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28,
+    29, 30
   ];
 
   const ethiopianDays = [
-    null, null, null, null, null, null, 1,
-    2, 3, 4, 5, 6, 7, 8, 9,
-    10, 11, 12, 13, 14, 15, 16,
-    17, 18, 19, 20, 21, 22, 23,
-    24, 25, 26, 27, 28, 29, 30
+    null, null, 1, 2, 3, 4, 5,
+    6, 7, 8, 9, 10, 11, 12,
+    13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26,
+    27, 28, 29, 30
   ];
 
   const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const amharicWeekdays = ['እ', 'ሰ', 'ማ', 'ረ', 'ሐ', 'ዓ', 'ቅ'];
 
   const isSelected = (day) => {
-    if (calendarType === 'gregorian' && day === 17) return true;
-    if (calendarType === 'ethiopian' && day === 9) return true;
+    if (calendarType === 'gregorian' && day === 21) return true;
+    if (calendarType === 'ethiopian' && day === 12) return true;
     return false;
   };
 
@@ -53,13 +53,14 @@ const WeddingCalendar = () => {
         <motion.div 
           key={calendarType}
           className="calendar-grid-container"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.3 }}
+          initial={{ rotateY: 78, opacity: 0 }}
+          animate={{ rotateY: 0, opacity: 1 }}
+          exit={{ rotateY: -78, opacity: 0 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transformPerspective: 900, transformOrigin: 'center center' }}
         >
           <div className="calendar-month-header">
-            {calendarType === 'gregorian' ? 'MAY 2026' : 'ግንቦት 2018'}
+            {calendarType === 'gregorian' ? 'NOVEMBER 2026' : 'ኅዳር 2019'}
           </div>
 
           <div className="calendar-weekdays">
