@@ -5,7 +5,7 @@ import './WeddingCalendar.css';
 
 const WeddingCalendar = () => {
   const { t, i18n } = useTranslation();
-  const [calendarType, setCalendarType] = useState('gregorian'); // 'gregorian' or 'ethiopian'
+  const [calendarType, setCalendarType] = useState('ethiopian');
 
   const gregorianDays = [
     1, 2, 3, 4, 5, 6, 7,
@@ -36,16 +36,16 @@ const WeddingCalendar = () => {
     <div className="calendar-card-container">
       <div className="calendar-controls">
         <button 
-          className={`calendar-tab ${calendarType === 'gregorian' ? 'active' : ''}`}
-          onClick={() => setCalendarType('gregorian')}
-        >
-          GREGORIAN
-        </button>
-        <button 
           className={`calendar-tab Amharic-font ${calendarType === 'ethiopian' ? 'active' : ''}`}
           onClick={() => setCalendarType('ethiopian')}
         >
           ETHIOPIAN
+        </button>
+        <button 
+          className={`calendar-tab ${calendarType === 'gregorian' ? 'active' : ''}`}
+          onClick={() => setCalendarType('gregorian')}
+        >
+          GREGORIAN
         </button>
       </div>
 

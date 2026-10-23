@@ -966,6 +966,12 @@
   color: #8d734c;
 }
 
+@media (max-width: 520px) {
+  .selah-ad {
+    bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 @media (max-width: 450px) {
   .waiting-text {
     font-size: 2.5rem;
