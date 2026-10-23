@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import './InvitationCard.css';
-import couplePhoto from '../assets/emu-1.jpg';
+import couplePhoto from '../assets/emuu.jpg';
 import versePhoto from '../assets/emu-3.jpg';
 import weddingRings from '../assets/wedding-rings.png';
 import calendarBg from '../assets/emu-2.jpg';
