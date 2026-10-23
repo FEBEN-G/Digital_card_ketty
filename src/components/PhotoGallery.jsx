@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import './PhotoGallery.css';
 
 import emu1 from '../assets/emu-1.jpg';
+import mule from '../assets/Mule.jpg';
 import emu2 from '../assets/emu-2.jpg';
 import emu3 from '../assets/emu-3.jpg';
 import emu4 from '../assets/Emu-4.jpg';
 import emu5 from '../assets/Emu-5.jpg';
+import mule1 from '../assets/mule-1.jpg';
 import emu6 from '../assets/emu-6.jpg';
 import emu7 from '../assets/Emu-7.jpg';
 import emu8 from '../assets/emu-8.jpg';
@@ -16,10 +18,12 @@ import emu from '../assets/emu.jpg';
 
 const photos = [
   { src: emu1, alt: 'Muluken and Rediet' },
+  { src: mule, alt: 'Muluken and Rediet' },
   { src: emu2, alt: 'Muluken and Rediet' },
   { src: emu3, alt: 'Muluken and Rediet' },
   { src: emu4, alt: 'Muluken and Rediet' },
   { src: emu5, alt: 'Muluken and Rediet' },
+  { src: mule1, alt: 'Muluken and Rediet' },
   { src: emu6, alt: 'Muluken and Rediet' },
   { src: emu7, alt: 'Muluken and Rediet' },
   { src: emu8, alt: 'Muluken and Rediet' },

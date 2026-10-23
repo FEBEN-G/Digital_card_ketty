@@ -6,6 +6,7 @@ import couplePhoto from '../assets/emu-1.jpg';
 import versePhoto from '../assets/emu-3.jpg';
 import weddingRings from '../assets/wedding-rings.png';
 import calendarBg from '../assets/emu-2.jpg';
+import countdownBg from '../assets/union.jpg';
 import CountdownTimer from './CountdownTimer';
 import WeddingCalendar from './WeddingCalendar';
 import PhotoGallery from './PhotoGallery';
@@ -316,6 +317,10 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
 
       {/* Page 5: Countdown Section */}
       <div className="final-countdown-section">
+        <div className="countdown-bg">
+          <img src={countdownBg} alt="" className="countdown-bg-image" />
+          <div className="countdown-bg-shade" />
+        </div>
         <CountdownTimer targetDate="2026-11-21T16:00:00" />
         
         <motion.div 
@@ -432,6 +437,17 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           <h2 className="waiting-text script-font">{t('waiting_message')}</h2>
           <div className="signature-divider" />
           <p className="signature-names">Muluken & Rediet</p>
+        </motion.div>
+
+        <motion.div
+          className="selah-ad"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <p className="selah-line">{t('selah_presents')}</p>
+          <a className="selah-contact" href="tel:+251937318894">{t('selah_contact')}</a>
         </motion.div>
       </div>
 
