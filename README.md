@@ -1,6 +1,6 @@
-# Muluken & Rediet
+# Mule & Ketty
 
-Digital wedding invitation for Muluken Habtamu and Rediet Getachew.
+Digital wedding invitation for Mule and Ketty.
 
 Saturday, November 21, 2026 at Gospel Truth Church, Jimma.
 

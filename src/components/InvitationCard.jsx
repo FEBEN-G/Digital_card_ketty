@@ -55,7 +55,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
     >
       <div className="hero-section" ref={heroRef}>
         <div className="full-screen-image-container hero-photo-depth">
-          <img src={couplePhoto} alt="Muluken and Rediet" className="couple-photo-full" />
+          <img src={couplePhoto} alt="Mule and Ketty" className="couple-photo-full" />
           <div className="card-overlay-cinematic" />
         </div>
 
@@ -87,7 +87,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
               opacity: { duration: 0.8 }
             }}
           >
-            Muluken & Rediet
+            Mule & Ketty
           </motion.h1>
 
           <motion.div 
@@ -207,7 +207,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Muluken & Rediet
+          Mule & Ketty
         </motion.h3>
 
         <motion.div 
@@ -257,7 +257,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 1.6 }}
         >
-          Mule & Redu • 2026
+          Mule & Ketty • 2026
         </motion.div>
       </div>
 
@@ -330,7 +330,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <p>Mule & Redu • 2026</p>
+          <p>Mule & Ketty • 2026</p>
         </motion.div>
       </div>
 
@@ -436,7 +436,7 @@ const InvitationCard = ({ isOpen, isRevealed }) => {
         >
           <h2 className="waiting-text script-font">{t('waiting_message')}</h2>
           <div className="signature-divider" />
-          <p className="signature-names">Muluken & Rediet</p>
+          <p className="signature-names">Mule & Ketty</p>
         </motion.div>
 
         <motion.div

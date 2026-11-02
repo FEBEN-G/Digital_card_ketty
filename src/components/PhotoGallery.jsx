@@ -17,19 +17,19 @@ import emu11 from '../assets/emu-11.jpg';
 import emu from '../assets/emu.jpg';
 
 const photos = [
-  { src: emu1, alt: 'Muluken and Rediet' },
-  { src: mule, alt: 'Muluken and Rediet' },
-  { src: emu2, alt: 'Muluken and Rediet' },
-  { src: emu3, alt: 'Muluken and Rediet' },
-  { src: emu4, alt: 'Muluken and Rediet' },
-  { src: emu5, alt: 'Muluken and Rediet' },
-  { src: mule1, alt: 'Muluken and Rediet' },
-  { src: emu6, alt: 'Muluken and Rediet' },
-  { src: emu7, alt: 'Muluken and Rediet' },
-  { src: emu8, alt: 'Muluken and Rediet' },
-  { src: emu9, alt: 'Muluken and Rediet' },
-  { src: emu11, alt: 'Muluken and Rediet' },
-  { src: emu, alt: 'Muluken and Rediet' },
+  { src: emu1, alt: 'Mule and Ketty' },
+  { src: mule, alt: 'Mule and Ketty' },
+  { src: emu2, alt: 'Mule and Ketty' },
+  { src: emu3, alt: 'Mule and Ketty' },
+  { src: emu4, alt: 'Mule and Ketty' },
+  { src: emu5, alt: 'Mule and Ketty' },
+  { src: mule1, alt: 'Mule and Ketty' },
+  { src: emu6, alt: 'Mule and Ketty' },
+  { src: emu7, alt: 'Mule and Ketty' },
+  { src: emu8, alt: 'Mule and Ketty' },
+  { src: emu9, alt: 'Mule and Ketty' },
+  { src: emu11, alt: 'Mule and Ketty' },
+  { src: emu, alt: 'Mule and Ketty' },
 ];
 
 const PhotoGallery = () => {
